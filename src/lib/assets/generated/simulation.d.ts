@@ -15,6 +15,7 @@ export interface Board extends ClassHandle {
 }
 
 export interface Results extends ClassHandle {
+  sum(): bigint;
   probPerTurn(): ResultsProbability;
 }
 
@@ -31,6 +32,7 @@ interface EmbindModule {
   };
   Results: {};
   simulate(_0: Board): Results;
+  chanceWin(_0: Results, _1: Results): number;
 }
 
 export type MainModule = WasmModule & EmbindModule;

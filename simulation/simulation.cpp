@@ -145,6 +145,12 @@ struct Results {
         return chance;
     }
 
+    uint64_t sum() {
+        uint64_t sum = 0;
+        for (int i = 0; i < MAX_TURNS; i++) sum += turnWins[i];
+        return sum;
+    }
+
     void printProbPerTurn() {
         ResultsProbability us = probPerTurn();
         for (int i = 0; i < MAX_TURNS; i++) {

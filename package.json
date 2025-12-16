@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "build:emscripten & vite build",
+		"build": "vite build",
 		"build:emscripten": "emcc -lembind -Os --no-entry -sALLOW_MEMORY_GROWTH=1 -sMODULARIZE=1 -sEXPORT_ES6=1 -o ./src/lib/assets/generated/simulation.js --emit-tsd simulation.d.ts ./simulation/wasm-main.cpp",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",

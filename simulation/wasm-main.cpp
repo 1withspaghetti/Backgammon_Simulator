@@ -8,8 +8,13 @@ Results _simulate(Board board) {
     return simulate(&board, 0);
 }
 
+double _chanceWin(Results first, Results second) {
+    return first.chanceWinAgainst(&second);
+}
+
 EMSCRIPTEN_BINDINGS(wasm_main) {
     emscripten::function("simulate", &_simulate);
+    emscripten::function("chanceWin", &_chanceWin);
 
     class_<Board>("Board")
         .constructor<uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t>()
@@ -17,6 +22,7 @@ EMSCRIPTEN_BINDINGS(wasm_main) {
     
     class_<Results>("Results")
         .function("probPerTurn", &Results::probPerTurn)
+        .function("sum", &Results::sum)
         ;
 
     value_object<ResultsProbability>("ResultsProbability")
